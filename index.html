@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf9fc">
+  <meta name="description" content="PhysOPSD introduces executable code as privileged physical context for on-policy self-distillation, improving physical plausibility in video generation.">
+  <meta property="og:title" content="PhysOPSD — Code as Privilege for Physically Plausible Video Generation">
+  <meta property="og:description" content="Executable worlds. Structured physical supervision. Simulation-free generation.">
+  <title>PhysOPSD — Code as Privilege for Physically Plausible Video Generation</title>
+  <link rel="icon" href="personal2.jpg" type="image/jpeg">
+  <link rel="stylesheet" href="styles.css">
+  <script src="media.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#comparisons">Skip to comparisons</a>
+  <header class="site-header">
+    <a class="wordmark logo-window" href="#top" aria-label="PhysOPSD home"><img src="assets/physopsd-logo.png" alt="PhysOPSD" width="2142" height="734"></a>
+    <nav aria-label="Main navigation"><a href="#idea">Overview</a><a href="#comparisons">Comparisons</a><a href="#studies">Case studies</a></nav>
+  </header>
+
+  <main id="top">
+    <section class="hero section-wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <h1 id="hero-title" class="logo-window"><img src="assets/physopsd-logo.png" alt="PhysOPSD" width="2142" height="734"></h1>
+        <p class="hero-title">Code as Privilege for <br>Physically Plausible <br>Video Generation</p>
+        <p class="hero-summary"><strong>Executable physical context</strong> for on-policy self-distillation.</p>
+        <div class="hero-links"><a class="button" href="assets/PhysOPSD.pdf" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h6"/></svg>Paper <span aria-hidden="true">↗</span></a><a class="button secondary" href="https://github.com/aigc3d/PhysOPSD" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-6 6 6 6m8-12 6 6-6 6m-2-15-4 18"/></svg>Code <span aria-hidden="true">↗</span></a></div>
+      </div>
+      <div class="hero-demo">
+        <div id="promo-player"><div class="video-frame promo-frame"><video data-src="assets/videos/physopsd-promo.mp4" poster="assets/posters/physopsd-promo.webp" preload="none" muted loop playsinline aria-label="PhysOPSD promotional comparison video"></video><button class="full-button" aria-label="View promo fullscreen" title="Fullscreen">⛶</button></div><div class="pair-controls"><button class="play-button" aria-label="Play promo">▷ Play</button><input type="range" class="pair-progress" min="0" max="1000" value="0" aria-label="Seek promo video"><button class="replay-button" aria-label="Replay promo" title="Replay">↻</button></div></div>
+      </div>
+    </section>
+
+    <div class="authors section-wrap">
+      <p class="author-names"><span>Harold Haodong Chen<sup>1,2</sup></span><span>Rui Peng<sup>2</sup></span><span>Lingteng Qiu<sup>2</sup></span><span>Kejie Qiu<sup>2</sup></span><span>Chao Xu<sup>2</sup></span><span>Zilong Dong<sup>2</sup></span></p>
+      <div class="affiliations" aria-label="Author affiliations">
+        <div class="affiliation"><img class="hkust-logo" src="assets/hkust-logo.svg" width="29" height="44" alt=""><span><sup>1</sup> HKUST</span></div>
+        <div class="affiliation"><img class="ath-logo" src="assets/ath-logo.png" width="38" height="38" alt=""><span><sup>2</sup> Alibaba Token Hub, Alibaba Group</span></div>
+      </div>
+    </div>
+
+    <section id="idea" class="idea section-wrap" aria-labelledby="idea-title">
+      <div class="section-intro"><h2 id="idea-title">Overview</h2><p class="intro-copy"><strong>Code as privileged physical context.</strong> PhysOPSD uses executable simulations to strengthen a video model's own predictions during on-policy self-distillation. The model internalizes physical dynamics and generates videos <strong>without simulation at inference</strong>.</p></div>
+      <div class="idea-principles">
+        <article><h3>Executable physical context</h3><p><strong>PhysOPSD-Engine</strong> translates reference scenarios into verifiable scene programs and renders physical drafts.</p></article>
+        <article><h3>Dual-level privilege</h3><p><strong>Dense → abstract → text.</strong> A stepped hierarchy bridges the information gap while reducing appearance shortcuts.</p></article>
+        <article><h3>Controlled physical variation</h3><p>Change physical parameters under <strong>shared rollout noise</strong> to supervise the resulting differences in dynamics.</p></article>
+      </div>
+      <figure class="method-figure"><a href="assets/figures/framework.png" target="_blank" rel="noopener" aria-label="Open the PhysOPSD framework figure at full size"><img src="assets/figures/framework.png" width="1900" height="680" loading="lazy" alt="PhysOPSD framework: executable physical context, dual-level privilege, controlled physical variation, and on-policy self-distillation from a privileged teacher to a student."></a><figcaption><span>PhysOPSD framework ↗</span><span>Physics learned during training. Simulation-free at inference.</span></figcaption></figure>
+    </section>
+
+    <section id="comparisons" class="comparisons" aria-labelledby="comparison-title">
+      <div class="section-wrap">
+        <div class="section-intro"><h2 id="comparison-title">Video comparisons</h2><p class="intro-copy"><strong>Base Model vs. +PhysOPSD.</strong> Selected examples of motion, contact, material response, and fluid interactions.</p></div>
+        <div class="gallery-toolbar"><div id="filters" class="filter-list" role="group" aria-label="Filter by physical phenomenon"></div><span id="comparison-count" class="count" aria-live="polite"></span></div>
+        <div id="comparison-grid" class="comparison-grid"></div>
+        <div class="gallery-bottom"><p>Paired playback · Full frames · Sound off</p><div class="pagination"><button id="previous-page" class="circle-button" aria-label="Previous comparisons">←</button><span id="page-count" aria-live="polite"></span><button id="next-page" class="circle-button" aria-label="Next comparisons">→</button></div></div>
+      </div>
+    </section>
+
+    <section id="studies" class="studies section-wrap" aria-labelledby="study-title">
+      <div class="section-intro"><h2 id="study-title">Case studies</h2><p class="intro-copy"><strong>One scene, two physical conditions.</strong> Compare dense and abstract drafts with their corresponding self-teacher generations.</p></div>
+      <div id="study-tabs" class="study-tabs" role="tablist" aria-label="Case studies"></div>
+      <div id="study-panel" class="study-panel" role="tabpanel" tabindex="0"></div>
+      <details class="study-disclosure"><summary>About these case studies</summary><p>These case studies illustrate physical context and self-teacher behavior. Drafts are reconstructed demonstrations, not the original training artifacts. References provide scene context; they are not self-teacher inputs. Clips retain their own timing.</p></details>
+    </section>
+
+    <section class="closing section-wrap"><h2>Empowering generation with coding agents</h2><p>Recent approaches use coding agents to replace parts of the video generation process. <strong>We explore how coding agents can empower the generator itself.</strong></p><p>Executable code supplies structured physical supervision during post-training. The resulting capabilities stay in the model, with <strong>no simulator required at inference</strong>.</p></section>
+
+    <section id="bibtex" class="citation section-wrap" aria-labelledby="bibtex-title">
+      <div class="citation-heading"><h2 id="bibtex-title">BibTeX</h2><a class="button secondary" href="assets/physopsd.bib" download>Download .bib <span aria-hidden="true">↓</span></a></div>
+      <pre tabindex="0" aria-label="PhysOPSD BibTeX citation"><code>@misc{chen2026physopsd,
+  title  = {PhysOPSD: Code as Privilege for Physically Plausible Video Generation},
+  author = {Chen, Harold Haodong and Peng, Rui and Qiu, Lingteng and Qiu, Kejie and Xu, Chao and Dong, Zilong},
+  year   = {2026}
+}</code></pre>
+    </section>
+  </main>
+  <footer class="section-wrap"><a class="wordmark logo-window" href="#top" aria-label="PhysOPSD home"><img src="assets/physopsd-logo.png" alt="PhysOPSD" width="2142" height="734"></a><p>© 2026 Harold H. Chen</p></footer>
+  <noscript><p class="no-script">Enable JavaScript to browse the video comparisons and interactive case studies. All videos are included in the assets/videos folder.</p></noscript>
+</body>
+</html>
